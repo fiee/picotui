@@ -6,9 +6,9 @@ This package allows for configuration-driven dialog setup.
 
 Work in progress...
 
-At the moment there’s just one function, `dialog_factory`.
+At the moment there’s just one function, ``dialog_factory``.
 
-Have a look at `examples/example_piconf.py`.
+Have a look at ``examples/example_piconf.py``.
 
 Define a nested dict of dialog configuration::
 
@@ -31,25 +31,25 @@ Define a nested dict of dialog configuration::
         mydialog = piconf.dialog_factory(DIALOGS['invoice_head'], {})
 
 Each item 'widgets' will become a label plus field.
-You need to define only those values that differ from defaults (see `defaults.py`).
+You need to define only those values that differ from defaults (see ``defaults.py``).
 
 * id: id of the widget and its values
 * label: text of the label (default: '')
 * length: width of the field in characters
 * type: widget type (default: 'text')
-** text: WTextEntry
-** label: WLabel only (not yet implemented)
-** drop: WDropDown
-** combo: WComboBox
-** auto: WAutoComplete
-** multi: WMultiEntry
-** check: WCheckbox
-** radio: WRadioButton
-** list: WListBox
-** button: WButton (not yet implemented)
-** date: WTextEntry (needs new widget for date entry)
-** int: WTextEntry for integer values (needs validators or new widget)
-** float: WTextEntry for float values (needs validators or new widget)
+  + text: WTextEntry
+  + label: WLabel only (not yet implemented)
+  + drop: WDropDown
+  + combo: WComboBox
+  + auto: WAutoComplete
+  + multi: WMultiEntry
+  + check: WCheckbox
+  + radio: WRadioButton
+  + list: WListBox
+  + button: WButton (not yet implemented)
+  + date: WTextEntry (needs new widget for date entry)
+  + int: WTextEntry for integer values (needs validators or new widget)
+  + float: WTextEntry for float values (needs validators or new widget)
 * choices: iterable or callable that returns an interable, for selection
   widgets (drop, combo, auto, multi, radio, list)
 
