@@ -15,4 +15,4 @@ setup(name='picotui',
       author='Paul Sokolovsky',
       author_email='pfalcon@users.sourceforge.net',
       license='MIT',
-      packages=['picotui'])
+      packages=['picotui','piconf'])
