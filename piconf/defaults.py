@@ -1,5 +1,5 @@
 from picotui import widgets as piwi
-from picotui import defs as pide
+# from picotui import defs as pide
 
 WIDGETS = {
     'text': piwi.WTextEntry,
@@ -12,7 +12,7 @@ WIDGETS = {
     'radio': piwi.WRadioButton,
     'list': piwi.WListBox,
     'button': piwi.WButton,
-    #
+    # need new widgets or validators:
     'date': piwi.WTextEntry,
     'int': piwi.WTextEntry,
     'float': piwi.WTextEntry,
@@ -25,7 +25,7 @@ SETTINGS = {
     'h': 0,
     'title': '',
     'buttons': ['Ok', 'Cancel'],
-    'widget': { 'type': 'text', 'label': '' },
+    'widget': {'type': 'text', 'label': ''},
     'start_x': 3,  # x of label
     'start_y': 2,  # y of first field
     'gap_x': 3,    # distance (chars) between label and field
