@@ -3,12 +3,13 @@ from picotui import widgets as piwi
 from .defaults import WIDGETS, SETTINGS
 
 
-__all__ = ['defaults']
+__all__ = ['defaults', 'dialog_factory']
 
 
 def dialog_factory(data, values={}):
     """
-    Create a dialog from configuration data
+    Create a dialog from configuration data.
+    See ``examples/example_piconf.py``
 
     Params:
     `data` (dict)
@@ -75,6 +76,8 @@ def dialog_factory(data, values={}):
             widgets[wdg['id']] = WClass()
         d.add(field_x, line, widgets[wdg['id']])
         line += 1 + dlg['gap_y']
+    # add empty label to extend auto width
+    d.add(field_x + field_len, dlg['start_y'], ' ' * dlg['gap_x'])
     # add buttons
     bt_min_width = dlg['button_min_width']
     bt_distance = dlg['button_gap']
