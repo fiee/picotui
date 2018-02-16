@@ -1,1 +1,4 @@
 __pycache__
+build
+dist
+picotui.egg-info
