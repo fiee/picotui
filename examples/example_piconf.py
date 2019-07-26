@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 from picotui import screen as pisc
-# from picotui import widgets as piwi
+from picotui import widgets as piwi
 from picotui import defs as pide
 import piconf
 
@@ -38,6 +38,10 @@ DIALOGS = {
             {'id': 'city', 'label': 'City', 'length': 30},
             {'id': 'zip', 'label': 'ZIP', 'length': 8},
             {'id': 'country', 'label': 'Country', 'type': 'combo', 'length': 30, 'choices': Countries, 'value': 'Germany'},
+        ],
+        'buttons': [
+            {'id': 'OK', 'label': 'Ok', 'finish_action': piwi.ACTION_OK },
+            {'id': 'Cancel', 'label': 'Cancel', 'finish_action': piwi.ACTION_CANCEL },
         ]
     }
 }

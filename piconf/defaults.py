@@ -24,7 +24,10 @@ SETTINGS = {
     'w': 0,
     'h': 0,
     'title': '',
-    'buttons': ['Ok', 'Cancel'],
+    'buttons': [
+        {'id': 'OK', 'label': 'Ok', 'finish_action': piwi.ACTION_OK },
+        {'id': 'CANCEL', 'label': 'Cancel', 'finish_action': piwi.ACTION_CANCEL },
+    ],
     'widget': {'type': 'text', 'label': ''},
     'start_x': 3,  # x of label
     'start_y': 2,  # y of first field

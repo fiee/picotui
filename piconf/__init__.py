@@ -90,7 +90,16 @@ def dialog_factory(data, values={}):
     bt_distance = dlg['button_gap']
     bt_x = label_x
     for bt in dlg['buttons']:
-        bt_width = max(len(bt), bt_min_width)
-        d.add(bt_x, line, WIDGETS['button'](bt_width, bt))
+        if type(bt) is dict:
+            bt_width = max(len(bt['label']), bt_min_width)
+            b = WIDGETS['button'](bt_width, bt['label'])
+            d.add(bt_x, line, b)
+            if 'finish_action' in bt:
+                b.finish_dialog = bt['finish_action']
+            if 'on_click' in bt:
+                b.on_click = bt['on_click']
+        else:
+            bt_width = max(len(bt), bt_min_width)
+            d.add(bt_x, line, WIDGETS['button'](bt_width, bt))
         bt_x += bt_width + bt_distance
     return d
