@@ -6,7 +6,7 @@ import piconf
 
 
 def Customers():
-    return ('one', 'two', 'three')
+    return ('one', 'two', 'three', 'four', 'five')
 
 
 def Countries():
@@ -18,7 +18,7 @@ DIALOGS = {
         'title': 'Invoice',
         'idprefix': 'inv',  # not yet used
         'widgets': [
-            {'id': 'date', 'label': 'Invoice Date', 'type': 'date', 'length': 10},
+            {'id': 'date', 'label': 'Invoice Date', 'type': 'date', 'length': 10, 'value': '1970-01-01'},
             {'id': 'no', 'label': 'Invoice Number', 'length': 30},
             {'id': 'orderdate', 'label': 'Order Date', 'type': 'date', 'length': 10},
             {'id': 'ordercode', 'label': 'Order Code', 'length': 30},
@@ -30,13 +30,14 @@ DIALOGS = {
         'title': 'Customer',
         'idprefix': 'cust',
         'widgets': [
+            {'id': 'title', 'label': '', 'type': 'label', 'value': 'New Customer'},
             {'id': 'code', 'label': 'Code', 'type': 'auto', 'length': 30, 'choices': Customers},
-            {'id': 'company', 'label': 'Company', 'length': 30},
-            {'id': 'name', 'label': 'Name', 'length': 30},
+            {'id': 'company', 'label': 'Company', 'length': 30, 'value': 'fiee visuelle'},
+            {'id': 'name', 'label': 'Name', 'length': 30, 'value': 'Hraban Ramm'},
             {'id': 'street', 'label': 'Street', 'length': 30},
             {'id': 'city', 'label': 'City', 'length': 30},
             {'id': 'zip', 'label': 'ZIP', 'length': 8},
-            {'id': 'country', 'label': 'Country', 'type': 'auto', 'length': 30, 'choices': Countries},
+            {'id': 'country', 'label': 'Country', 'type': 'combo', 'length': 30, 'choices': Countries, 'value': 'Germany'},
         ]
     }
 }

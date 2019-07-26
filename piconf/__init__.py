@@ -32,8 +32,8 @@ def dialog_factory(data, values={}):
     label_len = dlg['label_min_width']
     field_len = dlg['field_min_width']
     count = 0
-    for wg in dlg['widgets']:
-        wdg = copy.deepcopy(dlg['widget'])
+    for wg in dlg['widgets']: # 'widgets' is a list of dict
+        wdg = copy.deepcopy(dlg['widget']) # 'widget' is a dict from defaults
         wdg.update(wg)
         label_len = max(label_len, len(wg['label']))
         if 'length' in wdg:
@@ -52,9 +52,14 @@ def dialog_factory(data, values={}):
     field_x = label_x + dlg['gap_x'] + label_len
     for wg in dlg['widgets']:
         try:
+            # is there a value set for this widget?
             val = values[wg['id']]
         except KeyError:
             val = ''
+            if 'default' in wg:
+                val = wg['default']
+            elif 'value' in wg:
+                val = wg['value']
         wdg = copy.deepcopy(dlg['widget'])
         wdg.update(wg)
         WClass = WIDGETS[wdg['type']]
@@ -64,6 +69,8 @@ def dialog_factory(data, values={}):
         if wdg['type'] in ('text', 'date', 'int', 'float'):
             # simple entries have a length and a value
             widgets[wdg['id']] = WClass(wdg['length'], val)
+        elif wdg['type'] == 'label':
+            widgets[wdg['id']] = WClass(val)
         elif wdg['type'] in ('combo', 'auto', 'multi', 'list', 'drop'):
             # complex widgets have also a list of choices
             if wdg['type'] == 'drop':
