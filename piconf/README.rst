@@ -23,11 +23,17 @@ Define a nested dict of dialog configuration::
                     {'id': 'ordercode', 'label': 'Order Code', 'length': 30},
                     {'id': 'discount', 'label': 'Discount', 'type': 'int', 'length': 3},
                     {'id': 'tax', 'label': 'Tax Mode', 'type': 'radio', 'choices': ['netto', 'brutto']},
+                ],
+                'buttons': [
+                    {'id': 'OK', 'label': 'Ok',
+                    'finish_action': picotui.widgets.ACTION_OK },
+                    {'id': 'Cancel', 'label': 'Cancel',
+                    'finish_action': picotui.widgets.ACTION_CANCEL },
                 ]
             },
             # ... more
         }
-        
+
         mydialog = piconf.dialog_factory(DIALOGS['invoice_head'], {})
 
 Each item of 'widgets' will become a label plus field.
@@ -51,22 +57,21 @@ You need to define only those values that differ from defaults (see ``defaults.p
   + ``date``: WTextEntry (needs new widget for date entry)
   + ``int``: WTextEntry for integer values (needs validators or new widget)
   + ``float``: WTextEntry for float values (needs validators or new widget)
-  
+
 * ``choices``: iterable or callable that returns an interable, for selection
   widgets (drop, combo, auto, multi, radio, list)
 
 The configured widgets will get added in two columns (labels, fields).
 Feel free to add more to the returned dialog.
 
-Dialog data can overwrite all the default values:
+Dialog data can overwrite all of the default values:
 
 * ``x`` (default: 2), x position of the dialog
 * ``y`` (default: 1), y position of the dialog
 * ``w`` (default: 0), width of the dialog (0 = auto)
 * ``h`` (default: 0), height of the dialog (0 = auto)
 * ``title`` (default: '')
-* ``buttons`` (default: ``['Ok', 'Cancel']``) -- add those buttons
-  (at the moment they’re inactive)
+* ``buttons`` (default: ``['Ok', 'Cancel']``) – see example
 * ``widget`` (default: ``{ 'type': 'text', 'label': '' }``), default values
   for every widget
 * ``start_x`` (default: 3), x position of labels
@@ -81,12 +86,15 @@ Dialog data can overwrite all the default values:
   (actual/maximum width is calculated)
 * ``button_gap`` (default: 3), distance between automatically placed buttons
 
+ATM buttons are only handled in the button area, not in the widgets area.
+They can have a ``finish_action`` (``picotui``: ``finish_dialog``) or an ``on_click`` handler.
+
 
 Roadmap
 -------
 
 * return values
-* make buttons work
+* make buttons work (also between other widgets)
 * include missing ``picotui`` widgets
 * validators
 * add some more widgets (date, int, float...)
@@ -96,4 +104,3 @@ Author
 ------
 
 fiëé visuëlle, Henning Hraban Ramm, <hraban@fiee.net>
- 
